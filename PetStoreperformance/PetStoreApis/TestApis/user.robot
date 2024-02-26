@@ -11,7 +11,7 @@ Resource                            ../Robot_Resources/perftest.resource
 
 
 *** Test Cases ***
-Scenario:El Usuario Ejecuta Un Get Request Para Realizar El login En La Aplicacion
+Scenario: The User Executes a Get Request to Login to the Application
         [Documentation]                  Get Request login user
 
         ${header}=                       create dictionary                  Content-Type=application/xml
@@ -21,7 +21,7 @@ Scenario:El Usuario Ejecuta Un Get Request Para Realizar El login En La Aplicaci
         ${statusCode}=                   convert to string                  ${Get_Response.status_code}
         should be equal                  ${statusCode}                      200
 
-Scenario:El Usuario Ejecuta Un Post Request Para Crear Un Usuario
+Scenario:User Executes a Post Request to Create a User
         [Documentation]                  Post Request create user
 
         #validate the login status code and validation of response test apiendpoint
@@ -43,7 +43,7 @@ Scenario:El Usuario Ejecuta Un Post Request Para Crear Un Usuario
         should contain                   ${res_body}                        phone
         should contain                   ${res_body}                        userStatus
 
-Scenario:El Usuario Ejecuta Un Post Request Para Crear Una Lista De Usuarios
+Scenario:User Executes a Post Request to Create a List of Users
         [Documentation]                  Post Request create list of user
 
         #validate the login status code and validation of response test apiendpoint
@@ -66,7 +66,7 @@ Scenario:El Usuario Ejecuta Un Post Request Para Crear Una Lista De Usuarios
         should contain                   ${res_body}                        phone
         should contain                   ${res_body}                        userStatus
 
-Scenario:El Usuario Ejecuta Un Get Request Para Realizar La Consulta De Un Usuario Con Su Nombre De Usuario
+Scenario:The User Executes A Get Request To Query A User With Their Username
         [Documentation]                  get Request user username
 
         ${header}=                       create dictionary                  Content-Type=application/json
@@ -76,7 +76,7 @@ Scenario:El Usuario Ejecuta Un Get Request Para Realizar La Consulta De Un Usuar
         ${statusCode}=                   convert to string                  ${Get_Response.status_code}
         should be equal                  ${statusCode}                      200
 
-Scenario:El Usuario Ejecuta Un Put Request Para Actualizar Un Usuario
+Scenario:User Executes a Put Request to Update a User
         [Documentation]                  Put Request update user
 
         ${header}=                      create dictionary                   Content-Type=application/json
@@ -97,7 +97,7 @@ Scenario:El Usuario Ejecuta Un Put Request Para Actualizar Un Usuario
         should contain                   ${res_body}                        phone
         should contain                   ${res_body}                        userStatus
 
-Scenario:El Usuario Ejecuta Un Delete Request Para Eliminar Un Usuario
+Scenario:User Executes a Delete Request to Delete a User
         [Documentation]                  Delete Request user
 
         ${header}=                       create dictionary                  Content-Type=application/json
