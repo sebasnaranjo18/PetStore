@@ -13,7 +13,7 @@ Resource                            ../images/Mia.jpg
 
 
 *** Test Cases ***
-Scenario:El Usuario Ejecuta Un Post Request Para Agregar Una Mascota
+Scenario: User Executes a Post Request to Add a Pet
         [Documentation]                  Post Request add pet
 
         create session                   API_Testing_Post                    ${PETSTOREAPI}
@@ -25,7 +25,7 @@ Scenario:El Usuario Ejecuta Un Post Request Para Agregar Una Mascota
         ${code}                          convert to string                   ${response.status_code}
         should be equal                  ${code}                             200
 
-Scenario:El Usuario Ejecuta Un Put Request Para Actualizar Una Mascota
+Scenario: User Executes a Put Request to Update a Pet
         [Documentation]                  Put Request update pet
 
         create session                  API_Testing_Post                     ${PETSTOREAPI}
@@ -37,7 +37,7 @@ Scenario:El Usuario Ejecuta Un Put Request Para Actualizar Una Mascota
         ${code}                          convert to string                   ${response.status_code}
         should be equal                  ${code}                             200
 
-Scenario:El Usuario Ejecuta Un Get Request Para Obtener Informacion De Una Mascota Segun Su Tag
+Scenario: The User Executes a Get Request to Obtain Information About a Pet According to Its Tag
         [Documentation]                  Get Request searching pet by tag
 
         ${header}=                       create dictionary                  Content-Type=application/xml
@@ -47,7 +47,7 @@ Scenario:El Usuario Ejecuta Un Get Request Para Obtener Informacion De Una Masco
         ${statusCode}=                   convert to string                  ${Get_Response.status_code}
         should be equal                  ${statusCode}                      200
 
-Scenario:El Usuario Ejecuta Un Get Request Para Obtener Informacion De Una Mascota Segun Su Status
+Scenario: The User Executes a Get Request to Obtain Information About a Pet According to Its Status
         [Documentation]                  Get Request searching pet by status
 
         ${header}=                       create dictionary                  Content-Type=application/xml
@@ -57,7 +57,7 @@ Scenario:El Usuario Ejecuta Un Get Request Para Obtener Informacion De Una Masco
         ${statusCode}=                   convert to string                  ${Get_Response.status_code}
         should be equal                  ${statusCode}                      200
 
-Scenario:El Usuario Ejecuta Un Get Request Para Obtener Informacion De Una Mascota Segun Su ID
+Scenario: The User Executes a Get Request to Obtain Information About a Pet According to Its ID
         [Documentation]                  Get Request searching pet by id
 
         ${header}=                       create dictionary                  Content-Type=application/xml
@@ -67,7 +67,7 @@ Scenario:El Usuario Ejecuta Un Get Request Para Obtener Informacion De Una Masco
         ${statusCode}=                   convert to string                  ${Get_Response.status_code}
         should be equal                  ${statusCode}                      200
 
-Scenario:El Usuario Ejecuta Un Delete Request Para Eliminar Una Mascota
+Scenario: User Executes a Delete Request to Delete a Pet
         [Documentation]                  Delete Request pet
 
         ${header}=                       create dictionary                  Content-Type=application/json

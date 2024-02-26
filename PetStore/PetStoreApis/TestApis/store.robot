@@ -11,7 +11,7 @@ Resource                            ../Resources/resources.robot
 
 
 *** Test Cases ***
-Scenario:El Usuario Ejecuta Un Get Request Para Obtener El Inventario De La Tienda
+Scenario:User Executes Get Request To Obtain Store Inventory
         [Documentation]                  Get Request inventory
 
         ${header}=                       create dictionary                  Content-Type=application/xml
@@ -21,7 +21,7 @@ Scenario:El Usuario Ejecuta Un Get Request Para Obtener El Inventario De La Tien
         ${statusCode}=                   convert to string                  ${Get_Response.status_code}
         should be equal                  ${statusCode}                      200
 
-Scenario:El Usuario Ejecuta Un Post Request Para Crear Una Orden
+Scenario: User Executes a Post Request to Create an Order
         [Documentation]                  Post Request create order
 
         ${header}=                       create dictionary                   Content-Type=application/json
@@ -41,7 +41,7 @@ Scenario:El Usuario Ejecuta Un Post Request Para Crear Una Orden
         should contain                   ${res_body}                         status
         should contain                   ${res_body}                         complete
 
-Scenario:El Usuario Ejecuta Un Get Request Para Obtener Una Orden Segun Su ID
+Scenario: The User Executes a Get Request to Obtain an Order Based on His ID
         [Documentation]                  Get Request inventory
 
         ${header}=                       create dictionary                  Content-Type=application/xml
@@ -51,7 +51,7 @@ Scenario:El Usuario Ejecuta Un Get Request Para Obtener Una Orden Segun Su ID
         ${statusCode}=                   convert to string                  ${Get_Response.status_code}
         should be equal                  ${statusCode}                      200
 
-Scenario:El Usuario Ejecuta Un Delete Request Para Eliminar Una Orden
+Scenario: User Executes a Delete Request to Delete an Order
         [Documentation]                  Delete Request order
 
         ${header}=                       create dictionary                  Content-Type=application/json
