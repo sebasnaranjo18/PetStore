@@ -1,0 +1,70 @@
+[Scenario]
+uploadmode = imm
+scriptcount = 6
+graphlist = 65dcd168-2
+
+[1]
+robots = 10
+delay = 0
+rampup = 1800
+run = 7200
+test = Scenario:El Usuario Ejecuta Un Get Request Para Realizar El login En La Aplicacion
+script = ..\TestApis\user.robot
+
+[2]
+robots = 10
+delay = 0
+rampup = 1800
+run = 7200
+test = Scenario:El Usuario Ejecuta Un Post Request Para Crear Un Usuario
+script = ..\TestApis\user.robot
+
+[3]
+robots = 10
+delay = 0
+rampup = 1800
+run = 7200
+test = Scenario:El Usuario Ejecuta Un Post Request Para Crear Una Lista De Usuarios
+script = ..\TestApis\user.robot
+
+[4]
+robots = 10
+delay = 0
+rampup = 1800
+run = 7200
+test = Scenario:El Usuario Ejecuta Un Get Request Para Realizar La Consulta De Un Usuario Con Su Nombre De Usuario
+script = ..\TestApis\user.robot
+
+[5]
+robots = 10
+delay = 0
+rampup = 1800
+run = 7200
+test = Scenario:El Usuario Ejecuta Un Put Request Para Actualizar Un Usuario
+script = ..\TestApis\user.robot
+
+[6]
+robots = 10
+delay = 0
+rampup = 1800
+run = 7200
+test = Scenario:El Usuario Ejecuta Un Delete Request Para Eliminar Un Usuario
+script = ..\TestApis\user.robot
+
+[65dcd168-2]
+id = 65dcd168-2
+open = True
+win_width = 664
+win_height = 371
+win_location_x = 563
+win_location_y = 168
+win_screen = :0.0
+name = pet
+show_settings = True
+show_legend = 1
+data_type = Result
+result_type = Response Time
+flter_result = Pass
+filter_name = None
+filter_pattern = 
+

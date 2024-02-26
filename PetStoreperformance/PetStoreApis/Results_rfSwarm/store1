@@ -1,0 +1,25 @@
+[Report]
+order = F8AFED86D43,F8AFED86D75
+
+[F8AFED86D43]
+name = Template
+parent = TOP
+type = note
+changed = 1708965550.0129392
+note = Define your template by adding sections and configuring the section settingsx12Each section can be:x12 -  Note (like this) section, free textx12 -  Heading, usefull for grouping sectionsx12 -  Contents like a table of contents or figuresx12 -  Data Table, with data from test resultsx12 -  Data Graph, for graphical representation of test resultsx12x12Each section can also have sub sectionsx12x12The cover page and overall report settings can be found on the settings pane of the Report item abovex12
+
+[F8AFED86D75]
+name = Test Result Summary
+parent = TOP
+type = table
+changed = 1708965575.0307047
+colours = 1
+datatype = Metric
+sql = SELECT PrimaryMetric , MetricType , SecondaryMetric , PrimaryMetric || ' - ' || MetricType || ' - ' || SecondaryMetric as x91Colourx93  , min(CAST(MetricValue AS NUMERIC)) AS 'Minimum' , round(avg(CAST(MetricValue AS NUMERIC)),3) AS 'Average' , round(percentile(CAST(MetricValue AS NUMERIC), 90),3) AS '90x37ile' , max(CAST(MetricValue AS NUMERIC)) AS 'Maximum' , round(stdev(CAST(MetricValue AS NUMERIC)),3) AS 'Std. Dev.' FROM MetricData GROUP by PrimaryMetric , MetricType , SecondaryMetric
+filteragent = 
+filtertype = None
+resulttype = None
+filterresult = None
+isnumeric = 1
+showcount = 1
+

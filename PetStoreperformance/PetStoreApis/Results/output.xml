@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.4 on win32)" generated="20240226 12:34:49.996" rpa="false" schemaversion="3">
+<suite id="s1" name="User" source="C:\Users\test\PycharmProjects\PetStoreperformance\PetStoreApis\TestApis\user.robot">
+<test id="s1-t1" name="Scenario:El Usuario Ejecuta Un Get Request Para Realizar El login En La Aplicacion" line="14">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/xml</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240226 12:34:51.110" level="INFO">${header} = {'Content-Type': 'application/xml'}</msg>
+<status status="PASS" starttime="20240226 12:34:51.109" endtime="20240226 12:34:51.110"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>API_Testing</arg>
+<arg>https://petstore3.swagger.io/api/v3</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240226 12:34:51.110" level="INFO">Creating Session using : alias=API_Testing, url=https://petstore3.swagger.io/api/v3, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240226 12:34:51.110" endtime="20240226 12:34:51.112"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${Get_Response}</var>
+<arg>API_Testing</arg>
+<arg>url=/user/login?username=theUser&amp;password=1234</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240226 12:34:51.668" level="INFO">GET Request : url=https://petstore3.swagger.io/api/v3/user/login?username=theUser&amp;password=1234 
+ path_url=/api/v3/user/login?username=theUser&amp;password=1234 
+ headers={'User-Agent': 'python-requests/2.30.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240226 12:34:51.670" level="INFO">GET Response : url=https://petstore3.swagger.io/api/v3/user/login?username=theUser&amp;password=1234 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 26 Feb 2024 17:34:52 GMT', 'Content-Type': 'application/json', 'Content-Length': '43', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Access-Control-Expose-Headers': 'Content-Disposition', 'X-Rate-Limit': '5000', 'X-Expires-After': 'Mon Feb 26 18:34:52 GMT 2024', 'Server': 'Jetty(9.4.9.v20180320)'} 
+ body=Logged in user session: 7207259152206464000 
+ </msg>
+<msg timestamp="20240226 12:34:51.670" level="INFO">C:\Users\test\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore3.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240226 12:34:51.670" level="INFO">${Get_Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240226 12:34:51.112" endtime="20240226 12:34:51.670"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Get_Response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240226 12:34:51.671" endtime="20240226 12:34:51.672"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${statusCode}</var>
+<arg>${Get_Response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20240226 12:34:51.673" level="INFO">${statusCode} = 200</msg>
+<status status="PASS" starttime="20240226 12:34:51.672" endtime="20240226 12:34:51.673"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${statusCode}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240226 12:34:51.674" endtime="20240226 12:34:51.674"/>
+</kw>
+<doc>Get Request login user</doc>
+<status status="PASS" starttime="20240226 12:34:51.108" endtime="20240226 12:34:51.674"/>
+</test>
+<test id="s1-t2" name="Scenario:El Usuario Ejecuta Un Post Request Para Crear Un Usuario" line="24">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240226 12:34:51.677" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20240226 12:34:51.676" endtime="20240226 12:34:51.677"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>id=10011</arg>
+<arg>username=sebas</arg>
+<arg>firstName=sebastian</arg>
+<arg>lastName=naranjo</arg>
+<arg>email=sebas@email.com</arg>
+<arg>password=12345</arg>
+<arg>phone=123456789</arg>
+<arg>userStatus=1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240226 12:34:51.678" level="INFO">${body} = {'id': '10011', 'username': 'sebas', 'firstName': 'sebastian', 'lastName': 'naranjo', 'email': 'sebas@email.com', 'password': '12345', 'phone': '123456789', 'userStatus': '1'}</msg>
+<status status="PASS" starttime="20240226 12:34:51.677" endtime="20240226 12:34:51.678"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>API_Testing_Post</arg>
+<arg>https://petstore3.swagger.io/api/v3</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240226 12:34:51.678" level="INFO">Creating Session using : alias=API_Testing_Post, url=https://petstore3.swagger.io/api/v3, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240226 12:34:51.678" endtime="20240226 12:34:51.678"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>API_Testing_Post</arg>
+<arg>/user</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20240226 12:34:51.680" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20240226 12:34:52.034" level="INFO">POST Request : url=https://petstore3.swagger.io/api/v3/user 
+ path_url=/api/v3/user 
+ headers={'User-Agent': 'python-requests/2.30.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '175'} 
+ body={"id": "10011", "username": "sebas", "firstName": "sebastian", "lastName": "naranjo", "email": "sebas@email.com", "password": "12345", "phone": "123456789", "userStatus": "1"} 
+ </msg>
+<msg timestamp="20240226 12:34:52.034" level="INFO">POST Response : url=https://petstore3.swagger.io/api/v3/user 
+ status=500, reason=Internal Server Error 
+ headers={'Date': 'Mon, 26 Feb 2024 17:34:53 GMT', 'Content-Type': 'application/json', 'Content-Length': '110', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Access-Control-Expose-Headers': 'Content-Disposition', 'Server': 'Jetty(9.4.9.v20180320)'} 
+ body={"code":500,"message":"There was an error processing your request. It has been logged (ID: 053097a85b005049)"} 
+ </msg>
+<msg timestamp="20240226 12:34:52.034" level="INFO">C:\Users\test\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore3.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240226 12:34:52.035" level="INFO">${response} = &lt;Response [500]&gt;</msg>
+<status status="PASS" starttime="20240226 12:34:51.680" endtime="20240226 12:34:52.035"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240226 12:34:52.035" endtime="20240226 12:34:52.037"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20240226 12:34:52.038" level="INFO">${code} = 500</msg>
+<status status="PASS" starttime="20240226 12:34:52.037" endtime="20240226 12:34:52.038"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20240226 12:34:52.039" level="FAIL">500 != 200</msg>
+<status status="FAIL" starttime="20240226 12:34:52.039" endtime="20240226 12:34:52.039"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${res_body}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.040" endtime="20240226 12:34:52.040"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.040" endtime="20240226 12:34:52.040"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>username</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.040" endtime="20240226 12:34:52.040"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>firstName</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.041" endtime="20240226 12:34:52.041"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>lastName</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.041" endtime="20240226 12:34:52.041"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.042" endtime="20240226 12:34:52.042"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>password</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.042" endtime="20240226 12:34:52.042"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>phone</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.042" endtime="20240226 12:34:52.042"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>userStatus</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.043" endtime="20240226 12:34:52.043"/>
+</kw>
+<doc>Post Request create user</doc>
+<status status="FAIL" starttime="20240226 12:34:51.675" endtime="20240226 12:34:52.043">500 != 200</status>
+</test>
+<test id="s1-t3" name="Scenario:El Usuario Ejecuta Un Post Request Para Crear Una Lista De Usuarios" line="46">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/xml</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240226 12:34:52.047" level="INFO">${header} = {'Content-Type': 'application/xml'}</msg>
+<status status="PASS" starttime="20240226 12:34:52.046" endtime="20240226 12:34:52.047"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>id=10011</arg>
+<arg>username=sebas</arg>
+<arg>firstName=sebastian</arg>
+<arg>lastName=naranjo</arg>
+<arg>email=sebas@email.com</arg>
+<arg>password=12345</arg>
+<arg>phone=123456789</arg>
+<arg>userStatus=1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240226 12:34:52.048" level="INFO">${body} = {'id': '10011', 'username': 'sebas', 'firstName': 'sebastian', 'lastName': 'naranjo', 'email': 'sebas@email.com', 'password': '12345', 'phone': '123456789', 'userStatus': '1'}</msg>
+<status status="PASS" starttime="20240226 12:34:52.047" endtime="20240226 12:34:52.048"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<arg>${body}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20240226 12:34:52.048" level="INFO">${list} = [{'id': '10011', 'username': 'sebas', 'firstName': 'sebastian', 'lastName': 'naranjo', 'email': 'sebas@email.com', 'password': '12345', 'phone': '123456789', 'userStatus': '1'}]</msg>
+<status status="PASS" starttime="20240226 12:34:52.048" endtime="20240226 12:34:52.048"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>API_Testing_Post</arg>
+<arg>https://petstore3.swagger.io/api/v3</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240226 12:34:52.049" level="INFO">Creating Session using : alias=API_Testing_Post, url=https://petstore3.swagger.io/api/v3, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240226 12:34:52.049" endtime="20240226 12:34:52.049"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>API_Testing_Post</arg>
+<arg>/user/createWithList</arg>
+<arg>data=${list}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20240226 12:34:52.050" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20240226 12:34:52.051" level="FAIL">ValueError: too many values to unpack (expected 2)</msg>
+<status status="FAIL" starttime="20240226 12:34:52.050" endtime="20240226 12:34:52.059"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.060" endtime="20240226 12:34:52.060"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.060" endtime="20240226 12:34:52.060"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.060" endtime="20240226 12:34:52.060"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${res_body}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.061" endtime="20240226 12:34:52.061"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.062" endtime="20240226 12:34:52.062"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>username</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.062" endtime="20240226 12:34:52.062"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>firstName</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.063" endtime="20240226 12:34:52.063"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>lastName</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.064" endtime="20240226 12:34:52.064"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.064" endtime="20240226 12:34:52.064"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>password</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.065" endtime="20240226 12:34:52.065"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>phone</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.065" endtime="20240226 12:34:52.065"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>userStatus</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.066" endtime="20240226 12:34:52.066"/>
+</kw>
+<doc>Post Request create list of user</doc>
+<status status="FAIL" starttime="20240226 12:34:52.044" endtime="20240226 12:34:52.066">ValueError: too many values to unpack (expected 2)</status>
+</test>
+<test id="s1-t4" name="Scenario:El Usuario Ejecuta Un Get Request Para Realizar La Consulta De Un Usuario Con Su Nombre De Usuario" line="69">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240226 12:34:52.068" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20240226 12:34:52.068" endtime="20240226 12:34:52.068"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>API_Testing</arg>
+<arg>https://petstore3.swagger.io/api/v3</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240226 12:34:52.069" level="INFO">Creating Session using : alias=API_Testing, url=https://petstore3.swagger.io/api/v3, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240226 12:34:52.069" endtime="20240226 12:34:52.069"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${Get_Response}</var>
+<arg>API_Testing</arg>
+<arg>/user/sebas</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240226 12:34:52.432" level="INFO">GET Request : url=https://petstore3.swagger.io/api/v3/user/sebas 
+ path_url=/api/v3/user/sebas 
+ headers={'User-Agent': 'python-requests/2.30.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240226 12:34:52.432" level="INFO">GET Response : url=https://petstore3.swagger.io/api/v3/user/sebas 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 26 Feb 2024 17:34:53 GMT', 'Content-Type': 'application/json', 'Content-Length': '152', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Access-Control-Expose-Headers': 'Content-Disposition', 'Server': 'Jetty(9.4.9.v20180320)'} 
+ body={"id":10011,"username":"sebas","firstName":"sebastian","lastName":"naranjo","email":"sebas@email.com","password":"12345","phone":"12345","userStatus":1} 
+ </msg>
+<msg timestamp="20240226 12:34:52.432" level="INFO">C:\Users\test\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore3.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240226 12:34:52.433" level="INFO">${Get_Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240226 12:34:52.070" endtime="20240226 12:34:52.433"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Get_Response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240226 12:34:52.433" endtime="20240226 12:34:52.435"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${statusCode}</var>
+<arg>${Get_Response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20240226 12:34:52.436" level="INFO">${statusCode} = 200</msg>
+<status status="PASS" starttime="20240226 12:34:52.435" endtime="20240226 12:34:52.436"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${statusCode}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240226 12:34:52.436" endtime="20240226 12:34:52.436"/>
+</kw>
+<doc>get Request user username</doc>
+<status status="PASS" starttime="20240226 12:34:52.068" endtime="20240226 12:34:52.437"/>
+</test>
+<test id="s1-t5" name="Scenario:El Usuario Ejecuta Un Put Request Para Actualizar Un Usuario" line="79">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240226 12:34:52.439" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20240226 12:34:52.438" endtime="20240226 12:34:52.439"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>id=11001</arg>
+<arg>username=sebastian</arg>
+<arg>firstName=sebas</arg>
+<arg>lastName=naranjos</arg>
+<arg>email=sebasno@email.com</arg>
+<arg>password=123456</arg>
+<arg>phone=12345678910</arg>
+<arg>userStatus=1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240226 12:34:52.440" level="INFO">${body} = {'id': '11001', 'username': 'sebastian', 'firstName': 'sebas', 'lastName': 'naranjos', 'email': 'sebasno@email.com', 'password': '123456', 'phone': '12345678910', 'userStatus': '1'}</msg>
+<status status="PASS" starttime="20240226 12:34:52.440" endtime="20240226 12:34:52.440"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>API_Testing_Post</arg>
+<arg>https://petstore3.swagger.io/api/v3</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240226 12:34:52.441" level="INFO">Creating Session using : alias=API_Testing_Post, url=https://petstore3.swagger.io/api/v3, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240226 12:34:52.441" endtime="20240226 12:34:52.441"/>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>API_Testing_Post</arg>
+<arg>/user/alejo</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
+<msg timestamp="20240226 12:34:52.442" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20240226 12:34:52.786" level="INFO">PUT Request : url=https://petstore3.swagger.io/api/v3/user/alejo 
+ path_url=/api/v3/user/alejo 
+ headers={'User-Agent': 'python-requests/2.30.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '181'} 
+ body={"id": "11001", "username": "sebastian", "firstName": "sebas", "lastName": "naranjos", "email": "sebasno@email.com", "password": "123456", "phone": "12345678910", "userStatus": "1"} 
+ </msg>
+<msg timestamp="20240226 12:34:52.787" level="INFO">PUT Response : url=https://petstore3.swagger.io/api/v3/user/alejo 
+ status=500, reason=Internal Server Error 
+ headers={'Date': 'Mon, 26 Feb 2024 17:34:53 GMT', 'Content-Type': 'application/json', 'Content-Length': '110', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Access-Control-Expose-Headers': 'Content-Disposition', 'Server': 'Jetty(9.4.9.v20180320)'} 
+ body={"code":500,"message":"There was an error processing your request. It has been logged (ID: 6f7c9ce6bb7a8627)"} 
+ </msg>
+<msg timestamp="20240226 12:34:52.787" level="INFO">C:\Users\test\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore3.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240226 12:34:52.787" level="INFO">${response} = &lt;Response [500]&gt;</msg>
+<status status="PASS" starttime="20240226 12:34:52.441" endtime="20240226 12:34:52.787"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240226 12:34:52.788" endtime="20240226 12:34:52.788"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20240226 12:34:52.790" level="INFO">${code} = 500</msg>
+<status status="PASS" starttime="20240226 12:34:52.789" endtime="20240226 12:34:52.790"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20240226 12:34:52.791" level="FAIL">500 != 200</msg>
+<status status="FAIL" starttime="20240226 12:34:52.790" endtime="20240226 12:34:52.791"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${res_body}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.791" endtime="20240226 12:34:52.791"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.792" endtime="20240226 12:34:52.792"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>username</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.792" endtime="20240226 12:34:52.792"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>firstName</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.792" endtime="20240226 12:34:52.793"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>lastName</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.793" endtime="20240226 12:34:52.793"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.793" endtime="20240226 12:34:52.794"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>password</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.794" endtime="20240226 12:34:52.794"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>phone</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.794" endtime="20240226 12:34:52.794"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>userStatus</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:52.795" endtime="20240226 12:34:52.795"/>
+</kw>
+<doc>Put Request update user</doc>
+<status status="FAIL" starttime="20240226 12:34:52.438" endtime="20240226 12:34:52.795">500 != 200</status>
+</test>
+<test id="s1-t6" name="Scenario:El Usuario Ejecuta Un Delete Request Para Eliminar Un Usuario" line="100">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240226 12:34:52.797" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20240226 12:34:52.797" endtime="20240226 12:34:52.797"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>API_Testing</arg>
+<arg>https://petstore3.swagger.io/api/v3</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240226 12:34:52.799" level="INFO">Creating Session using : alias=API_Testing, url=https://petstore3.swagger.io/api/v3, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240226 12:34:52.797" endtime="20240226 12:34:52.799"/>
+</kw>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${Get_Response}</var>
+<arg>API_Testing</arg>
+<arg>/user/sebas</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20240226 12:34:53.142" level="INFO">DELETE Request : url=https://petstore3.swagger.io/api/v3/user/sebas 
+ path_url=/api/v3/user/sebas 
+ headers={'User-Agent': 'python-requests/2.30.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20240226 12:34:53.142" level="INFO">DELETE Response : url=https://petstore3.swagger.io/api/v3/user/sebas 
+ status=500, reason=Internal Server Error 
+ headers={'Date': 'Mon, 26 Feb 2024 17:34:54 GMT', 'Content-Type': 'application/json', 'Content-Length': '110', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Access-Control-Expose-Headers': 'Content-Disposition', 'Server': 'Jetty(9.4.9.v20180320)'} 
+ body={"code":500,"message":"There was an error processing your request. It has been logged (ID: 5133bf2eaf366426)"} 
+ </msg>
+<msg timestamp="20240226 12:34:53.142" level="INFO">C:\Users\test\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore3.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240226 12:34:53.142" level="FAIL">HTTPError: 500 Server Error: Internal Server Error for url: https://petstore3.swagger.io/api/v3/user/sebas</msg>
+<status status="FAIL" starttime="20240226 12:34:52.799" endtime="20240226 12:34:53.148"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Get_Response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:53.148" endtime="20240226 12:34:53.148"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${statusCode}</var>
+<arg>${Get_Response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:53.148" endtime="20240226 12:34:53.148"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${statusCode}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" starttime="20240226 12:34:53.150" endtime="20240226 12:34:53.150"/>
+</kw>
+<doc>Delete Request user</doc>
+<status status="FAIL" starttime="20240226 12:34:52.796" endtime="20240226 12:34:53.150">HTTPError: 500 Server Error: Internal Server Error for url: https://petstore3.swagger.io/api/v3/user/sebas</status>
+</test>
+<status status="FAIL" starttime="20240226 12:34:49.998" endtime="20240226 12:34:53.152"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="4" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="4" skip="0" id="s1" name="User">User</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20240226 12:34:51.680" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20240226 12:34:52.050" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20240226 12:34:52.442" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+</errors>
+</robot>

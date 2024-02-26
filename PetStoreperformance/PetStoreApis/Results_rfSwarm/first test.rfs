@@ -1,0 +1,37 @@
+[Scenario]
+uploadmode = err
+scriptcount = 4
+graphlist = 
+
+[1]
+robots = 3
+delay = 0
+rampup = 300
+run = 60
+test = Scenario:El Usuario Ejecuta Un Get Request Para Obtener El Inventario De La Tienda
+script = ..\TestApis\store.robot
+
+[2]
+robots = 3
+delay = 0
+rampup = 300
+run = 600
+test = Scenario:El Usuario Ejecuta Un Post Request Para Crear Una Orden
+script = ..\TestApis\store.robot
+
+[3]
+robots = 3
+delay = 0
+rampup = 300
+run = 600
+test = Scenario:El Usuario Ejecuta Un Get Request Para Obtener Una Orden Segun Su ID
+script = ..\TestApis\store.robot
+
+[4]
+robots = 3
+delay = 0
+rampup = 300
+run = 600
+test = Scenario:El Usuario Ejecuta Un Delete Request Para Eliminar Una Orden
+script = ..\TestApis\store.robot
+
